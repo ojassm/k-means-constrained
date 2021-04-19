@@ -15,7 +15,8 @@
 import warnings
 import numpy as np
 import scipy.sparse as sp
-from .sklearn_import.metrics.pairwise import euclidean_distances,haversine_distances
+from .sklearn_import.metrics.pairwise import euclidean_distances
+from sklearn.metrics.pairwise import haversine_distances
 from .sklearn_import.utils.extmath import row_norms, squared_norm, cartesian
 from .sklearn_import.utils.validation import check_array, check_random_state, as_float_array, check_is_fitted
 from joblib import Parallel
