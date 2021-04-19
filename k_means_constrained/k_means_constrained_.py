@@ -15,7 +15,7 @@
 import warnings
 import numpy as np
 import scipy.sparse as sp
-from .sklearn_import.metrics.pairwise import euclidean_distances
+from .sklearn_import.metrics.pairwise import euclidean_distances,haversine_distances
 from .sklearn_import.utils.extmath import row_norms, squared_norm, cartesian
 from .sklearn_import.utils.validation import check_array, check_random_state, as_float_array, check_is_fitted
 from joblib import Parallel
@@ -395,7 +395,7 @@ def _labels_constrained(X, centers, size_min, size_max, distances):
 
     # Distances to each centre C. (the `distances` parameter is the distance to the closest centre)
     # K-mean original uses squared distances but this equivalent for constrained k-means
-    D = euclidean_distances(X, C, squared=False)
+    D = haversine_distances(X, C, squared=False)
 
     edges, costs, capacities, supplies, n_C, n_X = minimum_cost_flow_problem_graph(X, C, D, size_min, size_max)
     labels = solve_min_cost_flow_graph(edges, costs, capacities, supplies, n_C, n_X)
